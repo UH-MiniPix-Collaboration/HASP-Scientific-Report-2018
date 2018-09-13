@@ -1,0 +1,112 @@
+\documentclass[aps,superscriptaddress,floatfix,nofootinbib,showpacs,amsmath,amssymb,altaffilletter,floatfix,onecolumn]{revtex4-1}
+%add "rmp" within document class to make it double column and "twocolumn"
+%---
+
+\input{def.tex}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[title]{appendix}
+\usepackage{float}
+%\linespread{0.9}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\pagestyle{fancy}
+%\linespread{0}
+\renewcommand{\thepage}{}
+\renewcommand{\thepage}{\arabic{page}}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\parskip = 6pt %changes spacing between paragraphs
+%\nolinenumbers
+\makeatletter
+\def\p@subsection{}
+\makeatother
+\makeatletter
+\def\p@subsubsection{}
+\makeatother
+%---
+\begin{document}
+%---
+\title{SORA: Stratospheric Organism and Radiation Analyzer}
+
+\begin{abstract}
+\begin{center}
+{\bf Abstract}
+\end{center}
+The SORA payload sampled for the existence of microorganisms and bacterial spores in the upper atmosphere. The payload analyzed different aspects of the surrounding environment such as radiation exposure, temperature, pressure and humidity. The payload had three main scientific objectives. First, design and build a novel system that will isolate surrounding air and sample for cells. Second, onboard sensors analyze exposure to solar and cosmic radiation that microorganisms may encounter. Finally, monitor the environmental conditions such as temperature, pressure, and humidity. Furthermore, the design employed additive manufacturing and hobby electronics in its construction to provide an accessible basis for future missions and explore the bounds of the technology available.  SORA successfully isolated organisms and data was received on November 28th, 2017.  Onboard sensors gathered a wealth of information regarding surrounding radiation, with a peak dosage rate of about \SI{0.07}{\micro\Gray\per\minute} at ascent and about \SI{0.05}{\micro\Gray\per\minute} during float. Finally, SORA monitored the environment for the duration of the flight, successfully testing the prototype flight computer, while keeping the power consumption below \SI{1.5}{\ampere} at \SI{30}{\volt}.
+\newpage %Breaks page for the Table of Contents.
+\end{abstract}
+\input{authors.tex}
+\setlength{\parindent}{1em}
+\setdefaultleftmargin{1em}{1em}{}{}{}{}
+%---
+\setcounter{page}{0}\thispagestyle{empty}
+%---
+\maketitle
+\onecolumngrid
+\setcounter{tocdepth}{2}
+\setcounter{page}{0}\thispagestyle{empty}
+\tableofcontents
+\setcounter{page}{0}\thispagestyle{empty}
+\newpage
+%---
+\onecolumngrid %changed from "twocolumngrid"
+
+%Section: Design
+%\input{Design.tex} %This needs to be removed as a section and only the one below this (SORA Hardware Description) will be left in place.
+
+%Section: Introduction
+\input{Introduction.tex}
+%Section: IntroAstrobiology
+\input{IntroAstro.tex}
+%Section: IntroRadiation
+\input{IntroRad.tex}
+
+%Section: SORA Hardware Description
+\input{Hardware.tex}
+\input{Design_RESU.tex}
+\input{Design_Astro.tex}
+\input{Design_RAD.tex}
+
+%Section: Methods
+\input{Methods.tex}
+\input{Methods_RESU.tex}
+\input{Methods_Astro.tex}
+\input{Methods_RAD.tex}
+
+%Results and Analysis
+%Section: Flight Conditions and Environmental Data
+\input{Results.tex} %RESU first
+\input{Results_Rad.tex} %MiniPIX last
+\newpage
+\input{Results_Astro.tex} %Astro second
+
+%\input{Results_UV.tex}
+%\input{Simulations.tex} %Simulations results
+
+%Discussion
+\input{Discussion_RESU.tex} %RESU first
+\input{Discussion_Astro.tex} %Astro second
+\input{Discussion_Rad.tex} %MiniPIX last
+\input{Discussion_Simulations.tex} %Simulations discussion
+
+%Conclusion
+\input{Conclusion.tex} 
+\newpage
+%Appendix
+\input{Appendix.tex}
+\newpage
+
+%References
+\input{bib.tex}%Bibliography file
+
+%
+\clearpage
+%\bibliographystyle{SORA}
+%\bibliography{SORA}
+\end{document}

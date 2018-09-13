@@ -1,0 +1,464 @@
+%HASP Variables
+\newcommand{\MPThreshold}{\SI{4.00}{\kilo\eV}}
+%--- Packages
+\usepackage[colorlinks=true,pdfstartview=FitV,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[separate-uncertainty,retain-explicit-plus,per-mode=symbol,binary-units]{siunitx}
+\usepackage{array,mathtools,amssymb,dcolumn}
+\usepackage{amsmath}
+\usepackage[below]{placeins}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{afterpage}
+\usepackage{lineno}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{array}
+\usepackage[version=4]{mhchem}
+\usepackage{multirow}
+\usepackage{eurosym}
+\usepackage{pagecolor}
+\usepackage{fancyhdr}
+%--- 1 inch margins
+\usepackage{calc}
+\setlength\textwidth{6.5in}
+\setlength\textheight{9in}
+\setlength\oddsidemargin{(\paperwidth-\textwidth)/2 - 1in} 
+\setlength\evensidemargin{(\paperwidth-\textwidth)/2 - 1in} 
+\setlength\topmargin{(\paperheight-\textheight-\headheight-\headsep-\footskip)/2 - 1in}
+%--- Language
+\lstset{language=C++,basicstyle=\ttfamily}
+%--- Floats Placement
+\setlength\textfloatsep{5pt}
+\setlength\abovecaptionskip{5pt}
+%--- Counters
+\newcounter{mylistcounter}
+%--- Text and References
+\newcommand{\myrefs}[2]{\href{http://dx.doi.org/#2}{#1}}
+\newcommand{\mref}[1]{\href{http://#1}{#1}}
+\newcommand{\elog}[1]{\href{https://blackhole.lngs.infn.it/DS-50kg/#1}{#1}}
+\newcommand{\mrefsec}[1]{\href{https://#1}{#1}}
+\newcommand{\mrefs}[2]{\href{http://#2}{#1}}
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{arxiv:#1}}
+\newcommand{\grant}[2]{#1-#2}
+\newcommand{\docdb}[1]{\href{http://darkside-docdb.fnal.gov:8080/cgi-bin/ShowDocument?docid=#1}{DarkSide DocDB \##1}}
+\newcommand{\cmt}[2]{\indent{\tt \color{blue}#1: \color{red}#2}}
+\newcommand{\chk}[1]{{\tt \color{red}To be checked:~#1}}
+\newcommand{\fchk}[1]{{\tt \color{red}Figure to be replaced:~#1}}
+\newcommand{\event}[2]{{\tt Event\# #1, Run\# #2}}
+\newcommand{\minitab}[3]{\begin{tabular}{@{}#1@{}}{#2}\\{#3}\end{tabular}}
+%--- Software Packages
+\newcommand{\FLUKA}{\mbox{FLUKA}}
+\newcommand{\Geant}{\mbox{Geant4}}
+\newcommand{\GFDS}{\mbox{G4DS}}
+\newcommand{\SOURCES}{\mbox{SOURCES4A}}
+\newcommand{\TALYS}{\mbox{TALYS}}
+\newcommand{\SRIM}{\mbox{SRIM}}
+\newcommand{\LabVIEW}{\mbox{NI LabVIEW}}
+\newcommand{\CERNRoot}{\mbox{Root}}
+%--- Functions
+\newcommand{\logten}{\ensuremath{\log_{10}}}
+%--- Units
+\DeclareSIUnit\c{\mbox{$c$}}
+\DeclareSIUnit\magn{\mbox{$\times$}}
+\DeclareSIUnit\min{min}
+\DeclareSIUnit\week{week}
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\years{years}
+\DeclareSIUnit\yr{yr}
+\DeclareSIUnit\standard{std}
+\DeclareSIUnit\str{sr}
+\DeclareSIUnit\ppm{ppm}
+\DeclareSIUnit\ppb{ppb}
+\DeclareSIUnit\ppt{ppt}
+\DeclareSIUnit\pe{PE}
+\DeclareSIUnit\spe{SPE}
+\DeclareSIUnit\ev{events}
+\DeclareSIUnit\ct{counts}
+\DeclareSIUnit\neutron{\mbox{$n$}}
+\DeclareSIUnit\smp{samples}
+\DeclareSIUnit\Sample{S}
+\DeclareSIUnit\ch{ch}
+\DeclareSIUnit\hit{hit}
+\DeclareSIUnit\hits{hits}
+\DeclareSIUnit\bin{(\mbox{5-PE}~bin)}
+\DeclareSIUnit\sgm{\mbox{$\sigma$}}
+\DeclareSIUnit\rms{RMS}
+\DeclareSIUnit\keVr{\mbox{keV$_{\rm nr}$}}
+\DeclareSIUnit\keVee{\mbox{keV$_{e{\rm e}}$}}
+\DeclareSIUnit\ph{photons}
+\DeclareSIUnit\pm{PMT}
+\DeclareSIUnit\inch{''}
+\DeclareSIUnit\feet{'}
+\DeclareSIUnit\bit{bit}
+\DeclareSIUnit\sample{samples}
+\DeclareSIUnit\barn{barn}
+\DeclareSIUnit\bara{bar}
+\DeclareSIUnit\barg{barg}
+\DeclareSIUnit\mlardepth{\mbox(meter~of~\LAr~depth)}
+\DeclareSIUnit\Curie{Ci}
+\DeclareSIUnit\psi{psi}
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\liveday{\mbox{live-days}}
+\DeclareSIUnit\days{\mbox{days}}
+\DeclareSIUnit\day{\mbox{day}}
+\DeclareSIUnit\miles{\mbox{miles}}
+\DeclareSIUnit\degreeC{\mbox{$^{\circ}$C}}
+\DeclareSIUnit\electron{\mbox{$e^-$}}
+\DeclareSIUnit\Euro{\mbox{\euro}}
+\DeclareSIUnit\cph{cph}
+\DeclareSIUnit\neq{neq}
+\DeclareSIUnit\Gray{Gy}
+%--- Energies, Branching Ratios, and Abundances
+\newcommand{\BR}{\mbox{BR}}
+\newcommand{\EC}{\mbox{EC}}
+\newcommand{\PositronAnnihilationGammaEnergy}{\SI{511}{\keV}}
+\newcommand{\PbXRayEnergy}{\SI{46}{\keV}}
+\newcommand{\HOneNeutronCaptureGammaEnergy}{\SI{2.2}{\MeV}}
+\newcommand{\LiSixNaturalAbundance}{\SI{7.5}{\percent}}
+\newcommand{\LiSixNeutronCaptureCrossSection}{\SI{941}{\barn}}
+\newcommand{\LiSixNeutronCaptureTritonEnergy}{\SI{2.73}{\MeV}}
+\newcommand{\LiSixNeutronCaptureAlphaEnergy}{\SI{2.05}{\MeV}}
+\newcommand{\LiSixNeutronCaptureTritonAlphaQuenchedEnergy}{\SIrange[range-units=single]{400}{500}{\keVee}}
+\newcommand{\BTenNaturalAbundance}{\SI{20}{\percent}}
+\newcommand{\BTenNeutronCaptureCrossSection}{\SI{3840}{\barn}}
+\newcommand{\BTenNeutronCaptureGroundDecayBR}{\SI{6.4}{\percent}}
+\newcommand{\BTenNeutronCaptureGroundDecayAlphaEnergy}{\SI{1775}{\keV}}
+\newcommand{\BTenNeutronCaptureExcitedDecayBR}{\SI{93.6}{\percent}}
+\newcommand{\BTenNeutronCaptureExcitedDecayGammaEnergy}{\SI{478}{\keV}}
+\newcommand{\BTenNeutronCaptureExcitedDecayAlphaEnergy}{\SI{1471}{\keV}}
+\newcommand{\BTenNeutronCaptureExcitedDecayAlphaQuenchedEnergy}{\SIrange[range-units=single]{30}{35}{\keVee}}
+\newcommand{\BTenNeutronCaptureExcitedDecayAlphaPE}{\SIrange[range-units=single]{25}{35}{\pe}}
+\newcommand{\COneFourQValue}{\SI{156}{\keV}}
+\newcommand{\CoFiveSevenQValue}{\SI{122}{\keV}}
+\newcommand{\BaOneThreeThreeQValue}{\SI{356}{\keV}}
+\newcommand{\CsOneThreeSevenQValue}{\SI{662}{\keV}}
+\newcommand{\ArThreeSevenDecay}{\EC}
+\newcommand{\ArThreeSevenBR}{\SI{100}{\percent}}
+\newcommand{\ArThreeSevenQValue}{\SI{2.7}{\keV}}
+\newcommand{\ArThreeSevenMeanLife}{\SI{50.51(3)}{\day}}
+\newcommand{\ArThreeSevenHalfLife}{\SI{35.04}{\day}}
+\newcommand{\ArThreeSevenKOneBR}{\SI{81.5}{\percent}}
+\newcommand{\ArThreeSevenKTwoToFourBR}{\SI{8.7}{\percent}}
+\newcommand{\ArThreeSevenKCaptureXRaysEnergy}{\SI{2.82}{\keV}}
+\newcommand{\ArThreeNineQValue}{\SI{565}{\keV}}
+\newcommand{\ArThreeNineMeanLife}{\SI{388}{\year}}
+\newcommand{\RbEightThreeMeanLife}{\SI{124.4}{\day}}
+\newcommand{\RbEightFiveMGammaEnergy}{\SI{514}{\keV}}
+\newcommand{\RbEightFiveMMeanLife}{\SI{1.464}{\micro\s}}
+\newcommand{\KrEightThreeQValue}{\SI{41.5}{\keV}}
+\newcommand{\KrEightThreeMOneMeanLife}{\SI{2.64}{\hour}}
+\newcommand{\KrEightThreeMOneECEnergy}{\SI{32.1}{\keV}}
+\newcommand{\KrEightThreeMTwoMeanLife}{\SI{222}{\nano\second}}
+\newcommand{\KrEightThreeMTwoECEnergy}{\SI{9.4}{\keV}}
+\newcommand{\KrEightThreeMOneTwoECEnergy}{\SI{41.5}{\keV}}
+\newcommand{\KrEightFiveGroundDecayQValue}{\SI{687}{\keV}}
+\newcommand{\KrEightFiveExcitedDecayBR}{\SI{0.43}{\percent}}
+\newcommand{\KrEightFiveExcitedDecayQValue}{\SI{173}{\keV}}
+\newcommand{\GdNatNeutronCaptureCrossSection}{\SI{48890}{\barn}}
+\newcommand{\PbTwoOneZeroHalfLife}{\SI{22.3}{\yr}}
+\newcommand{\PbTwoOneZeroMeanLife}{\SI{32.0}{\yr}}
+\newcommand{\PoTwoOneZeroAlphaEnergy}{\SI{5.3}{\MeV}}
+\newcommand{\PoTwoOneTwoAlphaEnergy}{\SI{8.78}{\MeV}}
+\newcommand{\BiTwoOneTwoAlphaOneEnergy}{\SI{6.09}{\MeV}}
+\newcommand{\BiTwoOneTwoAlphaTwoEnergy}{\SI{6.05}{\MeV}}
+\newcommand{\BiTwoOneTwoHalfLife}{\SI{10.6}{\hour}}
+\newcommand{\PoTwoOneSixAlphaEnergy}{\SI{6.78}{\MeV}}
+\newcommand{\RnTwoTwoZeroHalfLife}{\SI{56}{\second}}
+\newcommand{\RnTwoTwoZeroAlphaEnergy}{\SI{6.29}{\MeV}}
+\newcommand{\RnTwoTwoTwoHalfLife}{\SI{3.8}{\day}}
+\newcommand{\RaTwoTwoFourHalfLife}{\SI{3.6}{\day}}
+\newcommand{\ThTwoTwoEightHalfLife}{\SI{1.9}{\yr}}
+\newcommand{\AmTwoFourGammaOneEnergy}{\SI{59.5}{\keV}}
+\newcommand{\AmTwoFourOneGammaTwoBR}{\SI{56}{\percent}}
+\newcommand{\AmBeGammaEnergy}{\SI{4.4}{\MeV}}
+\newcommand{\AmBe}{\ce{^241AmBe}}
+\newcommand{\AmC}{\ce{^241Am^13C}}
+\newcommand{\AmCNeutronEnergy}{\SI{4}{\MeV}}
+\newcommand{\DD}{\ce{^2D}-\ce{^2D}}
+\newcommand{\DDNeutronEnergy}{\SI{2.45}{\MeV}}
+\newcommand{\AArArThreeNineOverArFourZeroRatio}{\num{8E-16}}
+\newcommand{\AArArThreeNineActivity}{\SI{1}{\becquerel\per\kg}}
+\newcommand{\NeutronsPerChainDecayUTh}{\numrange{E-5}{E-7}}
+\newcommand{\LArRadiogenicNeutronInteractionLength}{\SI{~10}{\cm}}
+%--- Cosmology
+\newcommand{\LCDM}{\mbox{$\Lambda$CDM}}
+%--- Solar Neutrinos
+\newcommand{\PP}{\mbox{$pp$}}
+\newcommand{\PEP}{\mbox{$pep$}}
+\newcommand{\CNO}{\mbox{CNO}}
+%--- Names
+\newcommand{\DS}{\mbox{DarkSide}}
+\newcommand{\DSt}{\mbox{DarkSide-10}}
+\newcommand{\DSf}{\mbox{DarkSide-50}}
+\newcommand{\DSp}{\mbox{DarkSide-Proto}}
+\newcommand{\DSk}{\mbox{DarkSide-20k}}
+\newcommand{\DSs}{\mbox{DS}}
+\newcommand{\DSts}{\mbox{DS-10}}
+\newcommand{\DSfs}{\mbox{DS-50}}
+\newcommand{\DSps}{\mbox{DS-Proto}}
+\newcommand{\DSks}{\mbox{DS-20k}}
+\newcommand{\DSCollaborators}{\num{\sim~300}}
+\newcommand{\DSInstitutes}{\num{\sim~70}}
+\newcommand{\DSCountries}{\num{15}}
+\newcommand{\GADMC}{\mbox{GADMC}}
+\newcommand{\DEAP}{\mbox{DEAP-3600}}
+\newcommand{\mCLEAN}{\mbox{MiniCLEAN}}
+\newcommand{\ArDM}{\mbox{ArDM}}
+\newcommand{\Argo}{\mbox{Argo}}
+\newcommand{\ThreeDPi}{\mbox{3D$\pi$}}
+\newcommand{\FBP}{\mbox{FBP}}
+\newcommand{\BX}{\mbox{Borexino}}
+\newcommand{\SNO}{\mbox{SNO}}
+\newcommand{\SCENE}{\mbox{SCENE}}
+\newcommand{\ReD}{\mbox{ReD}}
+\newcommand{\ARIS}{\mbox{ARIS}}
+\newcommand{\Urania}{\mbox{Urania}}
+\newcommand{\Aria}{\mbox{Aria}}
+\newcommand{\Seruci}{\mbox{Seruci}}
+\newcommand{\SeruciZero}{\mbox{Seruci-0}}
+\newcommand{\SeruciOne}{\mbox{Seruci-I}}
+\newcommand{\SeruciTwo}{\mbox{Seruci-II}}
+\newcommand{\LOGAN}{\mbox{LOGAN}}
+\newcommand{\DART}{\mbox{DART}}
+\newcommand{\MAWG}{M\&A\,WG}
+\newcommand{\CTF}{\mbox{CTF}}
+\newcommand{\WBS}{\mbox{WBS}}
+\newcommand{\CROne}{\mbox{CR1}}
+\newcommand{\CRH}{\mbox{CRH}}
+\newcommand{\LSV}{\mbox{LSV}}
+\newcommand{\WCV}{\mbox{WCV}}
+\newcommand{\wt}{\mbox{WT}}
+\newcommand{\TPC}{\mbox{TPC}}
+\newcommand{\TPCs}{\mbox{TPCs}}
+\newcommand{\LArTPC}{\mbox{LAr~TPC}}
+\newcommand{\LArTPCs}{\mbox{LAr~TPCs}}
+\newcommand{\calis}{\mbox{CALIS}}
+\newcommand{\UV}{\mbox{UV}}
+\newcommand{\NUV}{\mbox{NUV}}
+\newcommand{\TMF}{\mbox{TMF}}
+\newcommand{\PMT}{\mbox{PMT}}
+\newcommand{\PMTs}{\mbox{\PMT s}}
+\newcommand{\MCP}{\mbox{MCP}}
+\newcommand{\MCPPMT}{\mbox{\MCP-\PMT}}
+\newcommand{\MCPPMTs}{\mbox{\MCPPMT s}}
+\newcommand{\SiPM}{\mbox{SiPM}}
+\newcommand{\SiPMs}{\mbox{SiPMs}}
+\newcommand{\RGBHd}{\mbox{RGB-HD}}
+\newcommand{\RGBHdSf}{\mbox{RGB-HD-SF}}
+\newcommand{\RGBHdSfHRq}{\mbox{RGB-HD-HR$_q$}}
+\newcommand{\RGBHdSfLRq}{\mbox{RGB-HD-LR$_q$}}
+\newcommand{\NUVHd}{\mbox{NUV-HD}}
+\newcommand{\NUVHdSf}{\mbox{NUV-HD-SF}}
+\newcommand{\NUVHdLf}{\mbox{NUV-HD-LF}}
+\newcommand{\NUVHdSfHRq}{\mbox{NUV-HD-SF-HR$_q$}}
+\newcommand{\NUVHdSfLRq}{\mbox{NUV-HD-SF-LR$_q$}}
+\newcommand{\NUVHdLfHRq}{\mbox{NUV-HD-LF-HR$_q$}}
+\newcommand{\NUVHdLfLRq}{\mbox{NUV-HD-LF-LR$_q$}}
+\newcommand{\HRq}{\mbox{HR$_q$}}
+\newcommand{\LRq}{\mbox{LR$_q$}}
+\newcommand{\HD}{\mbox{HD}}
+\newcommand{\CTE}{\mbox{CTE}}
+\newcommand{\PCB}{\mbox{PCB}}
+\newcommand{\PCBs}{\mbox{PCBs}}
+\newcommand{\TSV}{\mbox{TSV}}
+\newcommand{\TSVs}{\mbox{TSVs}}
+\newcommand{\tile}{\mbox{tile}}
+\newcommand{\tiles}{\mbox{tiles}}
+\newcommand{\SPAD}{\mbox{SPAD}}
+\newcommand{\SPADs}{\mbox{SPADs}}
+\newcommand{\QE}{\mbox{QE}}
+\newcommand{\PDE}{\mbox{PDE}}
+\newcommand{\OV}{\mbox{OV}}
+\newcommand{\LV}{\mbox{LV}}
+\newcommand{\SCR}{\mbox{SCR}}
+\newcommand{\DCR}{\mbox{DCR}}
+\newcommand{\DiCT}{\mbox{DiCT}}
+\newcommand{\DeCT}{\mbox{DeCT}}
+\newcommand{\AP}{\mbox{AP}}
+\newcommand{\DLED}{\mbox{DLED}}
+\newcommand{\TCNR}{\mbox{TCNR}}
+\newcommand{\TCNP}{\mbox{TCNP}}
+\newcommand{\CMOS}{\mbox{CMOS}}
+\newcommand{\HLST}{\mbox{HLST}}
+\newcommand{\SQB}{\mbox{SQB}}
+\newcommand{\SQBs}{\mbox{\SQB s}}
+\newcommand{\TRB}{\mbox{TRB}}
+\newcommand{\TRBs}{\mbox{\TRB s}}
+\newcommand{\WIMP}{\mbox{WIMP}}
+\newcommand{\WIMPs}{\mbox{\WIMP s}}
+\newcommand{\MC}{\mbox{MC}}
+\newcommand{\DAQ}{\mbox{DAQ}}
+\newcommand{\ADC}{\mbox{ADC}}
+\newcommand{\ADCs}{\mbox{\ADC s}}
+\newcommand{\TDC}{\mbox{TDC}}
+\newcommand{\TDCs}{\mbox{\TDC s}}
+\newcommand{\artdaq}{\mbox{artdaq}}
+\newcommand{\TMB}{\mbox{TMB}}
+\newcommand{\PC}{\mbox{PC}}
+\newcommand{\PCTMB}{\mbox{\PC-\TMB}}
+\newcommand{\PPO}{\mbox{PPO}}
+\newcommand{\BisMSB}{\mbox{BisMSB}}
+\newcommand{\POPOP}{\mbox{POPOP}}
+\newcommand{\DIN}{\mbox{DIN}}
+\newcommand{\LAB}{\mbox{LAB}}
+\newcommand{\PXE}{\mbox{PXE}}
+\newcommand{\ITO}{\mbox{ITO}}
+\newcommand{\PTFE}{\mbox{PTFE}}
+\newcommand{\FEP}{\mbox{FEP}}
+\newcommand{\TPB}{\mbox{TPB}}
+\newcommand{\og}{\mbox{Operations Group}}
+\newcommand{\VUV}{\mbox{VUV}}
+\newcommand{\LAr}{\ce{LAr}}
+\newcommand{\GAr}{\ce{GAr}}
+\newcommand{\AAr}{\ce{AAr}}
+\newcommand{\UAr}{\ce{UAr}}
+\newcommand{\DAr}{\ce{DAr}}
+\newcommand{\LRAr}{\ce{LRAr}}
+\newcommand{\LIN}{\ce{LN2}}
+\newcommand{\LXe}{\ce{LXe}}
+\newcommand{\HPGe}{\mbox{HPGe}}
+\newcommand{\HVFT}{\mbox{HVFT}}
+\newcommand{\UHMWPE}{\mbox{UHMWPE}}
+\newcommand{\TOF}{\mbox{TOF}}
+\newcommand{\PET}{\mbox{PET}}
+\newcommand{\TOFPET}{\mbox{\TOF-\PET}}
+\newcommand{\PETCT}{\mbox{\PET /CT}}
+\newcommand{\FDG}{\mbox{\ce{^18F}-FDG}}
+\newcommand{\LOR}{\mbox{LOR}}
+\newcommand{\CPU}{\mbox{CPU}}
+\newcommand{\CT}{\mbox{CT}}
+\newcommand{\CPUs}{\mbox{CPUs}}
+\newcommand{\STEM}{\mbox{STEM}}
+\newcommand{\ROI}{\mbox{ROI}}
+\newcommand{\SPE}{\mbox{SPE}}
+\newcommand{\SNR}{\mbox{SNR}}
+\newcommand{\SNRAmp}{\mbox{SNR$_{\rm Amplitude}$}}
+\newcommand{\SNRCharge}{\mbox{SNR$_{\rm Charge}$}}
+\newcommand{\SNRFast}{\mbox{SNR$_{\rm Fast}$}}
+\newcommand{\SNRFilter}{\mbox{SNR$_{\rm Filtered}$}}
+\newcommand{\OA}{\mbox{OA}}
+\newcommand{\GBP}{\mbox{GBP}}
+\newcommand{\TIA}{\mbox{TIA}}
+\newcommand{\TIAs}{\mbox{\TIA s}}
+\newcommand{\FEB}{\mbox{FEB}}
+\newcommand{\FEBs}{\mbox{\FEB s}}
+\newcommand{\VFEB}{\mbox{VFEB}}
+\newcommand{\VFEBs}{\mbox{\VFEB s}}
+\newcommand{\VDCB}{\mbox{VDCB}}
+\newcommand{\VDCBs}{\mbox{\VDCB s}}
+\newcommand{\AVol}{\mbox{$A_{\tiny\rm Vol}$}}
+\newcommand{\NoG}{\mbox{NG}}
+\newcommand{\NoGTrue}{\mbox{$\NoG_{\rm True}$}}
+\newcommand{\Tz}{\mbox{$T_z$}}
+\newcommand{\eno}{\mbox{$e_n$}}
+\newcommand{\enot}{\mbox{$e_n^2$}}
+\newcommand{\ino}{\mbox{$i_n$}}
+\newcommand{\inot}{\mbox{$i_n^2$}}
+\newcommand{\Vno}{\mbox{$V_n$}}
+\newcommand{\Vnot}{\mbox{$V_n^2$}}
+\newcommand{\VnoTot}{\mbox{$V_n^{\rm Tot}$}}
+\newcommand{\fRes}{\mbox{$f_{\rm Res}$}}
+\newcommand{\FTDb}{\mbox{$f_{\rm 3Db}$}}
+\newcommand{\FSDb}{\mbox{$f_{\rm 6Db}$}}
+\newcommand{\TDb}{\SI{3}{\decibel}}
+\newcommand{\SDb}{\SI{6}{\decibel}}
+\newcommand{\PSDno}{\mbox{$\rm PSD_{n}$}}
+\newcommand{\PSDnoReferencePower}{\SI{1}{\milli\watt}}
+\newcommand{\NSF}{\mbox{NSF}}
+\newcommand{\RAS}{\mbox{RAS}}
+\newcommand{\GSSI}{\mbox{GSSI}}
+\newcommand{\INFN}{\mbox{INFN}}
+\newcommand{\MIUR}{\mbox{MIUR}}
+\newcommand{\CERN}{\mbox{CERN}}
+\newcommand{\LHC}{\mbox{LHC}}
+\newcommand{\CFI}{\mbox{CFI}}
+\newcommand{\NSERC}{\mbox{NSERC}}
+\newcommand{\LNGS}{\mbox{LNGS}}
+\newcommand{\LSC}{\mbox{LSC}}
+\newcommand{\SNOLab}{\mbox{SNOLab}}
+\newcommand{\TRIUMF}{\mbox{TRIUMF}}
+\newcommand{\LNS}{\mbox{LNS}}
+\newcommand{\DUNE}{\mbox{DUNE}}
+\newcommand{\CNAF}{\mbox{CNAF}}
+\newcommand{\PoliMi}{\mbox{PoliMi}}
+\newcommand{\FBKTIFPA}{\mbox{FBK/TIFPA}}
+\newcommand{\FBK}{\mbox{FBK}}
+\newcommand{\MPD}{\mbox{MPD}}
+\newcommand{\LFoundry}{\mbox{LFoundry}}
+\newcommand{\SensL}{\mbox{SensL}}
+\newcommand{\NOA}{\mbox{NOA}}
+\newcommand{\LSO}{\mbox{LSO}}
+\newcommand{\LYSO}{\mbox{LYSO}}
+\newcommand{\CRT}{\mbox{CRT}}
+\newcommand{\ASIC}{\mbox{ASIC}}
+\newcommand{\ASICs}{\mbox{ASICs}}
+\newcommand{\PSA}{\mbox{PSA}}
+\newcommand{\UHV}{UHV}
+\newcommand{\HalfLife}{\mbox{$\tau_{\frac{1}{2}}$}}
+\newcommand{\ICPMS}{\mbox{ICP-MS}}
+\newcommand{\LA}{\mbox{LA}}
+\newcommand{\LAICPMS}{\mbox{\LA-\ICPMS}}
+\newcommand{\BiPo}{\mbox{BiPo-3}}
+\newcommand{\PEB}{\mbox{PEB}}
+\newcommand{\PEBs}{\mbox{PEBs}}
+\newcommand{\VO}{\mbox{VO}}
+\newcommand{\LiDaR}{\mbox{LiDaR}}
+\newcommand{\ArlonFiveFiveNT}{\mbox{Arlon~55-NT}}
+\newcommand{\ArlonEightFiveN}{\mbox{Arlon~85-N}}
+\newcommand{\ArlonEightFiveNT}{\mbox{Arlon~85-NT}}
+\newcommand{\THERMOUNT}{\mbox{THERMOUNT\textregistered RT\textsuperscript{TM}}}
+\newcommand{\Vikuiti}{\mbox{3M Vikuiti\textsuperscript{TM}}}
+%--- Global Symbols
+\newcommand{\OmegaNonBaryonicFraction}{\num{0.85}}
+\newcommand{\OmegaNonBaryonicPercent}{\SI{85}{\percent}}
+\newcommand{\RhoDMSymbol}{\mbox{$\rho_{\rm dm}$}}
+\newcommand{\RhoDMValue}{\SI{0.3}{\GeV\per\square\c\per\cubic\cm}}
+\newcommand{\VelocityNaughtSymbol}{\mbox{$v_0$}}
+\newcommand{\VelocityNaughtValue}{\SI{220}{\km\per\s}}
+\newcommand{\VelocityEarthSymbol}{\mbox{$v_{\rm Earth}$}}
+\newcommand{\VelocityEarthValue}{\SI{232}{\km\per\s}}
+\newcommand{\VelocityEscapeSymbol}{\mbox{$v_{\rm escape}$}}
+\newcommand{\VelocityEscapeValue}{\SI{544}{\km\per\s}}
+\newcommand{\WIMPMassSymbol}{\mbox{m_\chi}}
+\newcommand{\WIMPMassLowLimit}{\SI{50}{\GeV\per\square\c}}
+\newcommand{\WIMPMassHundredGev}{\SI{100}{\GeV\per\square\c}}
+\newcommand{\WIMPMassOneTev}{\SI{1}{\TeV\per\square\c}}
+\newcommand{\WIMPMassTenTev}{\SI{10}{\TeV\per\square\c}}
+\newcommand{\LArNormalTemperature}{\SI{87}{\kelvin}}
+\newcommand{\LINNormalTemperature}{\SI{77}{\kelvin}}
+\newcommand{\LXeNormalTemperature}{\SI{165}{\kelvin}}
+\newcommand{\RoomTemperature}{\SI{300}{\kelvin}}
+\newcommand{\ElectronMass}{\SI{511}{\keV\per\square\c}}
+\newcommand{\LHCCenterOfMassEnergy}{\SI{13}{TeV}}
+\newcommand{\LHCDirectSearchesWIMPMassTurnoverThreshold}{\text{a few hundred~\si{GeV\per\square\c}}}
+\newcommand{\BackgroundFreeRequirement}{\SI{<0.1}{\ev}}
+\newcommand{\ZeroBackgroundNinetyPerCentCLEventsLimit}{\SI{2.3}{\ev}}
+\newcommand{\NinetyPerCentCL}{\mbox{\SI{90}{\percent}~C.L.}}
+\newcommand{\ArScintillationYield}{\SI{4E4}{\ph\per\MeV}}
+\newcommand{\ArWaveLength}{\SI{128}{\nano\meter}}
+\newcommand{\TPBWaveLength}{\SI{420}{\nano\meter}}
+\newcommand{\XeWaveLength}{\SI{172}{\nano\meter}}
+\newcommand{\NR}{\mbox{NR}}
+\newcommand{\NRs}{\mbox{NRs}}
+\newcommand{\ER}{\mbox{ER}}
+\newcommand{\ERs}{\mbox{ERs}}
+\newcommand{\bg}{\mbox{$\beta/\gamma$}}
+\newcommand{\bgs}{\mbox{$\beta/\gamma$'s}}
+\newcommand{\gr}{\mbox{$\gamma$-ray}}
+\newcommand{\grs}{\mbox{$\gamma$-rays}}
+\newcommand{\bta}{\mbox{$\beta$}}
+\newcommand{\btas}{\mbox{$\beta$'s}}
+\newcommand{\LEff}{\mbox{$\mathcal{L}_{\rm eff}$}}
+\newcommand{\SOne}{\mbox{S1}}
+\newcommand{\STwo}{\mbox{S2}}
+\newcommand{\STwoSoneRatio}{\mbox{S2/S1}}
+\newcommand{\SThree}{\mbox{S3}}
+\newcommand{\GWL}{\mbox{GWL}}
+\newcommand{\LWL}{\mbox{LWL}}
+\newcommand{\mbb}{\mbox{$m_{\beta\beta}$}}
+\newcommand{\qbb}{\mbox{$Q_{\beta\beta}$}}
+\newcommand{\bb}{\mbox{$\beta$$\beta$}}
+\newcommand{\obb}{\mbox{0$\nu$$\beta$$\beta$}}
+\newcommand{\toh}{\mbox{T$^{0\nu}_{1/2}$}}
+\newcommand{\tth}{\mbox{T$^{2\nu}_{1/2}$}}
+\newcommand{\aSe}{\mbox{a-\ce{Se}}}
