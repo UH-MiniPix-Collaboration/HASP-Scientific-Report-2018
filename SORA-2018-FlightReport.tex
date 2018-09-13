@@ -55,54 +55,45 @@ The SORA payload sampled for the existence of microorganisms and bacterial spore
 \setcounter{page}{0}\thispagestyle{empty}
 \newpage
 %---
-\onecolumngrid %changed from "twocolumngrid"
-
-%Section: Design
-%\input{Design.tex} %This needs to be removed as a section and only the one below this (SORA Hardware Description) will be left in place.
+\onecolumngrid
 
 %Section: Introduction
-\input{Introduction.tex}
-%Section: IntroAstrobiology
-\input{IntroAstro.tex}
-%Section: IntroRadiation
-\input{IntroRad.tex}
+\subimport{sections/}{Introduction.tex}
+\subimport{astrobio/}{IntroAstro.tex}
+\subimport{radiation/}{IntroRad.tex}
 
 %Section: SORA Hardware Description
-\input{Hardware.tex}
-\input{Design_Astro.tex}
-\input{Design_RAD.tex}
+\subimport{sections/}{Hardware.tex}
+\subimport{astrobio/}{Design_Astro.tex}
+\subimport{radiation/}{Design_RAD.tex}
 
 %Section: Methods
-\input{Methods.tex}
-\input{Methods_Astro.tex}
-\input{Methods_RAD.tex}
+\subimport{sections/}{Methods.tex}
+\subimport{astrobio/}{Methods_Astro.tex}
+\subimport{radiation/}{Methods_RAD.tex}
 
 %Results and Analysis
-%Section: Flight Conditions and Environmental Data
-\input{Results.tex} %RESU first
-\input{Results_Rad.tex} %MiniPIX last
-\newpage
-\input{Results_Astro.tex} %Astro second
+\subimport{sections/}{Results.tex} 
+\subimport{astrobio/}{Results_Astro.tex} 
+\subimport{radiation/}{Results_Rad.tex} 
 
-%\input{Simulations.tex} %Simulations results
 
 %Discussion
-\input{Discussion_Astro.tex} %Astro second
-\input{Discussion_Rad.tex} %MiniPIX last
-\input{Discussion_Simulations.tex} %Simulations discussion
+\subimport{astrobio/}{Discussion_Astro.tex}
+\subimport{radiation/}{Discussion_Rad.tex}
+\subimport{simulations/}{Discussion_Simulations.tex}
 
 %Conclusion
-\input{Conclusion.tex} 
+\subimport{sections/}{Conclusion.tex} 
 \newpage
+
 %Appendix
-\input{Appendix.tex}
+\subimport{sections/}{Appendix.tex}
 \newpage
 
 %References
-\input{bib.tex}%Bibliography file
+\subimport{bib/}{bib.tex}%Bibliography file
 
-%
 \clearpage
-%\bibliographystyle{SORA}
-%\bibliography{SORA}
+\bibliographystyle{SORA}
 \end{document}
