@@ -1,0 +1,8 @@
+
+*.toc
+*.out
+*.aux
+*.pdf
+*.log
+*.synctex(busy)
+*.bib
