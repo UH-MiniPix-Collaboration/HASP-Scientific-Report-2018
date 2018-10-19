@@ -28,7 +28,36 @@ was connected to the RPi via USB as shown in figure \ref{fig:telem-diagram}.
 
 \subsubsection{Uplink}
 \label{sec:Uplink} 
-
+Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
+Table \ref{table:Commands} list the uplink commands, thier functions and a brief description of what they did. 
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
+Downlink data was written to describe the data being read from the MiniPix detector. 
+
+\begin{table}[!ht]
+\centering
+\caption{Table of All Uplink Commands Used During Flight}
+\label{tab:All-Commands}
+\bigskip
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{\bfseries Command} & \multicolumn{1}{c|}{\bfseries HEX Uplink Command} &  \multicolumn{1}{c|}{\bfseries ASCII Uplink Command} & \multicolumn{1}{c|}{\bfseries Expected Current Consumption} \\
+\hline
+    Pump On     	& 0x65FF 	& e	 & \SI{0.96}{\ampere}   \\ \hline
+    Pump Off    	& 0x71FF 	& q	 & \SI{0.29}{\ampere}    \\ \hline
+    Start Acquisition  	& 0x68FF 	& h	 & \SI{0.47}{\ampere}    \\ \hline
+    End Acquistion 	& 0x76FF 	& v	 & \SI{0.29}{\ampere}    \\ \hline
+    Change Shutter Rate & 0x02 0x1 through 0xFF & - & nominal A \\ \hline
+\end{tabular}
+\medskip
+\end{table}
+
+Below is a sample of real data packets recieved during flight. 
+
+\lstset{basicstyle=\small, numbers=left, xleftmargin=2em, frame=tb, label = Downlinks, framexleftmargin=1.5em}
+\begin{lstlisting}[caption = Sample of downlinked data packets ID: 15667 - 15670.]
+...
+some samples here
+...
+\end{lstlisting}
