@@ -17,7 +17,7 @@ was connected to the RPi via USB as shown in figure \ref{fig:telem-diagram}.
   \includegraphics[width=.4\linewidth]{figures/rs232tousb.png}
   \caption{RS 232 to Male USB}{Cable used to connect the DB9 interface to the RPi}
   \label{fig:rs232tousb}
-\end{minipage}%
+\end{minipage}
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=.4\linewidth]{figures/duck.jpg}
@@ -29,7 +29,7 @@ was connected to the RPi via USB as shown in figure \ref{fig:telem-diagram}.
 \subsubsection{Uplink}
 \label{sec:Uplink} 
 Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
-Table \ref{table:Commands} list the uplink commands, thier functions and a brief description of what they did. 
+Table \ref{All-Commands} list the uplink commands, thier functions and a brief description of what they did. 
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
@@ -51,7 +51,11 @@ Downlink data was written to describe the data being read from the MiniPix detec
 	Change Acquisition Mode	& 0x04	& 0x01 or 0x02 **	& nominal A		\\ \hline
 	Astrobiology System On	& 0x05	& -			& spike			\\ \hline
 	Astrobiology System Off	& 0x06	& -			& nominal		\\ \hline
-\begin{tablenotes}* This parameter denotes the new shutter rate in seconds the MiniPix detector would begin to take acquistions}
+%\caption{
+% *This parameter denotes the new shutter rate in seconds the MiniPix %detector would begin to take acquistions
+% **This parameter denotes the new shutter rate in seconds the MiniPix %detector would begin to take acquistions
+%}
+
 \end{tabular}
 \medskip
 \end{table}
