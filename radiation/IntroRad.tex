@@ -7,12 +7,15 @@ These air showers consist of particles, known as secondary particles, which can 
 By measuring the secondary particles, the primary particle can be characterized its energy and direction. 
 The distribution of secondary particles \cite{Frank} is most dense in the troposphere. 
 In terms of the SORA payload, this means that the bulk of the measured data during ascent and descent will 
-be of secondary particles.
+be of secondary particles. During float the particle distribution will have a larger contribution from primary particles.
 
-\subsection{MiniPIX Detector}
-The MiniPIX \cite{silicon_sensor} is a silicon-based particle detector integrated with a Timepix \cite{timepix} chip. 
-The MiniPIX is a result of the Medipix Collaboration \cite{medipix}. 
-When an energetic particle is incident upon the sensor, energy is deposited in the detector, 
-and the resulting data is recorded. Figure \ref{fig:MiniPIXExample} gives an example of this interaction.
+Studying radiation dose is not only important for safety during spaceflight but is also important for safety during commerical airline flights.
+Airplanes fly in the portion of the troposphere where air showers are at their peak in terms of particle density, which is known as the atmospheric depth of the shower maximum $\chi _{max}$. As a consequence, passengers are exposed to relatively high doses of radiation.
+At these altitudes, neutrons contribute significantly to the overall radiation composition<<FIND CITATION FOR THIS. ASK MALENA; SHE KNOWS>>
 
-
+The MiniPIX \cite{silicon_sensor} is a silicon-based particle detector integrated with a Timepix \cite{timepix} chip. The device is a result of the Medipix Collaboration at CERN \cite{medipix}. 
+When an energetic particle is incident upon the sensor, energy is deposited in the detector, and the resulting data is recorded.
+The MiniPIX's sensor can only detect charged particles, meaning it is unable to directly detect a neutron. However, through the use of a scintillator, the neutron can interact with the scintillator and produce a specific signature of charged particles which can be detected by the MiniPIX.
+An example can be seen from Uher et al. \cite{Uher}, who use a lithium-based scintillator to detect neutrons using a silicon-based detector. The reaction is\ce{^6Li^+ + n -> ^3H+ \alpha (\SI{4.78}{\mega\eV})}.
+This iteration of the SORA payload attemped a similar procedure to measure neutrons. 
+For more detail regarding the functionality of the MiniPIX, refer to the previous flight report \cite{SORA}.
