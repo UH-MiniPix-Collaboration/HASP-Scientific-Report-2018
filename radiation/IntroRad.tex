@@ -3,18 +3,22 @@
 
 Galactic cosmic rays (GCRs) are primary particles produced outside of the solar system \cite{GCRs}.
 By colliding with other particles in Earth's atmosphere, GCRs can induce air showers consisting of secondary particles, which can be detected using sophisticated equipment.
-By measuring the secondary particles, the primary particle can be characterized its energy and direction. 
-The distribution of secondary particles \cite{Frank} is most dense in the troposphere. 
+These secondary particles can be measured, thus revealing information regarding the primary particle such as energy and direction. 
+The density of all secondary particles \cite{Frank} is most dense in the troposphere at an altitude of about \SIrange{2}{3}{\kilo\meter}.
+This is referred to as the atmospheric depth of the shower maximum $\chi _{max}$.
 In terms of the SORA payload, this means that the bulk of the measured data during ascent and descent will 
-be of secondary particles. During float the particle distribution will have a larger contribution from primary particles.
+be of secondary particles.
+During float the particle distribution will have a larger contribution from primary particles.
 
 Studying radiation dose is not only important for safety during spaceflight but is also important for safety during commerical airline flights.
-Airplanes fly in the portion of the troposphere where air showers are at their peak in terms of particle density, which is known as the atmospheric depth of the shower maximum $\chi _{max}$. As a consequence, passengers are exposed to relatively high doses of radiation.
+Airplanes fly in the portion of the troposphere where air showers are at their peak in terms of particle density. As a consequence, passengers are exposed to relatively high doses of radiation.
 At these altitudes, neutrons contribute significantly to the overall radiation composition<<FIND CITATION FOR THIS. ASK MALENA; SHE KNOWS>>
 
 The MiniPIX \cite{silicon_sensor} is a silicon-based particle detector integrated with a Timepix \cite{timepix} chip. The device is a result of the Medipix Collaboration at CERN \cite{medipix}. 
 When an energetic particle is incident upon the sensor, energy is deposited in the detector, and the resulting data is recorded.
+For more detail regarding the functionality of the MiniPIX, refer to the previous flight report \cite{SORA}.
 The MiniPIX's sensor can only detect charged particles, meaning it is unable to directly detect a neutron. However, through the use of a scintillator, the neutron can interact with the scintillator and produce a specific signature of charged particles which can be detected by the MiniPIX.
 An example can be seen from Uher et al. \cite{Uher}, who use a lithium-based scintillator to detect neutrons using a silicon-based detector. The reaction is\ce{^6Li^+ + n -> ^3H+ \alpha (\SI{4.78}{\mega\eV})}.
-This iteration of the SORA payload attemped a similar procedure to measure neutrons. 
-For more detail regarding the functionality of the MiniPIX, refer to the previous flight report \cite{SORA}.
+This iteration of the SORA payload attemped a similar procedure to measure neutrons but through the use of a boron-based scintillator.
+This particular scintillator was chosen due to its relatively larger reaction cross-section with neutrons.
+The larger cross-section increases the probability that the neutron will produce particles which can then be deteted by the MiniPIX.
