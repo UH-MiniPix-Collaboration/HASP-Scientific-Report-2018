@@ -14,7 +14,7 @@ Figure \ref{fig:softwaredesign}.
 	\end{center}
 \end{figure}
  
-By and large the MiniPIX, and TimePIX detectors have proven to be robust and resilient towards large thermal fluctuations. However, during the course of integration testing in Palestine a failure was observed. During the cold cycle of the test a slow but steadily increasing number of counts was observed that is anomalous to what one would expect near the earths surface. The expected number of counts per second should've been close to 3 but the downlinked data was reporting values of over 300 as shown in Figure \ref{fig:integrationtemps}.
+By and large the MiniPIX, and TimePIX detectors have proven to be robust and resilient towards large thermal fluctuations. However, during the course of integration testing in Palestine, a failure was observed. During the cold cycle of the test a slow but steadily increasing number of counts was observed that is anomalous to what one would expect near the earths surface. The expected number of counts per second should've been close to 3 but the downlinked data was reporting values of over 300 as shown in Figure \ref{fig:integrationtemps}.
 A correlation analysis was performed and showed that there was no direct correlation between device counts and temperature. Additionally, this behavior was not observed on an identical detector used during the 2017 SORA flight. 
 
 After consulting with some of the members of the TimePIX collaboration at the University of Houston and NASA we were informed that they were unable to determine a concrete reason for the failure but did provide a couple of possible explanations. The first, but most unlikely cause is that of a single event upset in the device causing the detector threshold to be lowered. TimePIX devices deployed on the International Space Station often experience this kind of behavior and consequently reload their configurations every few frames to prevent it. This is an exceedingly unlikely possibility in our case however, given the low levels of high energy particles near the earths surface. Another possibility is that the cold caused a partial failure in the power supply and the RPI was unable to provide enough power to the detector. This explanation is somewhat more likely, but because this kind of failure was never observed again it is difficult to say definitively what the cause was.
@@ -39,7 +39,7 @@ was connected to the RPi via USB.
 \subsubsection{Uplink}
 \label{sec:Uplink} 
 Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
-Table \ref{tab:All-Commands} list the uplink commands, thier functions and a brief description of what they did. 
+Table \ref{tab:All-Commands} list the uplink commands, thier functions, and a brief description of what they did. 
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
@@ -53,19 +53,23 @@ Downlink data was written to describe the data being read from the MiniPix detec
 \begin{tabular}{c|c|c|c}
 \hline
 \hline
-\multicolumn{1}{c|}{\bfseries Command} & \multicolumn{1}{c|}{\bfseries Byte 1} &  \multicolumn{1}{c|}{\bfseries Byte 2} & \multicolumn{1}{c}{\bfseries Expected Current Consumption} \\
+\multicolumn{1}{c|}{\bfseries Command} & \multicolumn{1}{c|}{\bfseries Byte 1} &  \multicolumn{1}{c|}{\bfseries Byte 2} & \multicolumn{1}{c}{\bfseries Current Consumption (A)} \\
 \hline
-	Start Acquisition  		& 0x01	& -	 				& \SI{0.47}{\ampere}    \\ \hline
-	End Acquistion 			& 0x02	& -	 				& \SI{0.29}{\ampere}    \\ \hline
-	Change Shutter Rate 	& 0x03 	& 0x01 to 0xFF *	& nominal A 		\\ \hline
-	Change Acquisition Mode	& 0x04	& 0x01 or 0x02 **	& nominal A		\\ \hline
-	Astrobiology System On	& 0x05	& -					& spike			\\ \hline
-	Astrobiology System Off	& 0x06	& -					& nominal		\\ \hline
+	Start Acquisition  		& 0x01	& -	 					& 0.47    \\ \hline
+	End Acquistion 			& 0x02	& -	 					& 0.29    \\ \hline
+	Change Shutter Rate 	& 0x03 	& 0x01 - 0xFF$^*$		& 0.47 		\\ \hline
+	Change Acquisition Mode	& 0x04	& 0x01 or 0x02$^{**}$	& 0.47		\\ \hline
+	Astrobiology System On	& 0x05	& -						& 1.8			\\ \hline
+	Astrobiology System Off	& 0x06	& -						& 0.47		\\ \hline
 \end{tabular}
+\\
+\footnotesize
+$^{*}$ 	This parameter takes a hexadecimal integer that represents the number of seconds for each shutter of the MiniPix \\
+$^{**}$	This parameter denotes which mode the MiniPix will operate in: 0x01 for fixed shutter rate, 0x02 for variable shutter rate
 \medskip
 \end{table}
 
-Below is a sample of real data packets recieved during flight. 
+Below is a sample of real data packets received during flight. 
 
 \lstset{basicstyle=\small, numbers=left, xleftmargin=2em, frame=tb, label = Downlinks, framexleftmargin=1.5em}
 \begin{lstlisting}[caption = Sample of downlinked data packets ID: 15667 - 15670.]
