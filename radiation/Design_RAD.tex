@@ -6,7 +6,7 @@ The control and analysis software was written entirely in Python and operated di
 Figure \ref{fig:softwaredesign}.
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{center}
 	\includegraphics[width=0.5\textwidth]{figures/SoftwareDesign.pdf}
 	\caption{Software design for the radiation control systems.}
@@ -19,7 +19,7 @@ A correlation analysis was performed and showed that there was no direct correla
 
 After consulting with some of the members of the TimePIX collaboration at the University of Houston and NASA we were informed that they were unable to determine a concrete reason for the failure but did provide a couple of possible explanations. The first, but most unlikely cause is that of a single event upset in the device causing the detector threshold to be lowered. TimePIX devices deployed on the International Space Station often experience this kind of behavior and consequently reload their configurations every few frames to prevent it. This is an exceedingly unlikely possibility in our case however, given the low levels of high energy particles near the earths surface. Another possibility is that the cold caused a partial failure in the power supply and the RPI was unable to provide enough power to the detector. This explanation is somewhat more likely, but because this kind of failure was never observed again it is difficult to say definitively what the cause was.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{center}
 	\includegraphics[width=\textwidth]{figures/tempsandcountsvtime.png}
 	\caption{Temperature of flight computer and detector and counts during integration testing.}
@@ -39,13 +39,9 @@ was connected to the RPi via USB.
 \subsubsection{Uplink}
 \label{sec:Uplink} 
 Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
-Table \ref{tab:All-Commands} list the uplink commands, thier functions, and a brief description of what they did. 
+Table \ref{tab:All-Commands} list the uplink commands, their functions, and a brief description of what they did. 
 
-\subsubsection{Downlink}
-\label{sec:Downlink}
-Downlink data was written to describe the data being read from the MiniPix detector. 
-
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \caption{Table of All Uplink Commands Used During Flight}
 \label{tab:All-Commands}
@@ -56,7 +52,7 @@ Downlink data was written to describe the data being read from the MiniPix detec
 \multicolumn{1}{c|}{\bfseries Command} & \multicolumn{1}{c|}{\bfseries Byte 1} &  \multicolumn{1}{c|}{\bfseries Byte 2} & \multicolumn{1}{c}{\bfseries Current Consumption (A)} \\
 \hline
 	Start Acquisition  		& 0x01	& -	 					& 0.47    \\ \hline
-	End Acquistion 			& 0x02	& -	 					& 0.29    \\ \hline
+	End Acquisition 		& 0x02	& -	 					& 0.29    \\ \hline
 	Change Shutter Rate 	& 0x03 	& 0x01 - 0xFF$^*$		& 0.47 		\\ \hline
 	Change Acquisition Mode	& 0x04	& 0x01 or 0x02$^{**}$	& 0.47		\\ \hline
 	Astrobiology System On	& 0x05	& -						& 1.8			\\ \hline
@@ -69,10 +65,41 @@ $^{**}$	This parameter denotes which mode the MiniPix will operate in: 0x01 for 
 \medskip
 \end{table}
 
+\subsubsection{Downlink}
+\label{sec:Downlink}
+Downlink data was written to describe the data being read from the MiniPix detector. Each packet contained data listed in the table below. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+\hline
+Description	& Bytes	\\
+\hline
+\hline
+MiniPix temperature 		&	val \\
+\hline
+Raspberry Pi temperature 	& 	val \\
+\hline
+Frame Counts 				& 	val \\
+\hline
+Frame Dose Rate 			& 	val \\
+\hline
+Frame Count 				& 	val \\
+\hline
+Device ID 					& 	val \\
+\hline
+UNIX Timestamp 				& 	val \\
+\hline
+\end{tabular}
+\end{table}
+is delimited by a new line. 
+
+
+
 Below is a sample of real data packets received during flight. 
 
 \lstset{basicstyle=\small, numbers=left, xleftmargin=2em, frame=tb, label = Downlinks, framexleftmargin=1.5em}
-\begin{lstlisting}[caption = Sample of downlinked data packets ID: 15667 - 15670.]
+\begin{lstlisting}[caption = Sample of downlinked data packets ID: 15667 - 15670]
   ...
   40.22,72.00,2.00,0.11214,15667,1,1532297412.36
   40.22,72.00,5.00,0.52153,15668,1,1532297414.56
