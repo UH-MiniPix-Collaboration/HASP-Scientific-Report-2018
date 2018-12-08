@@ -1,4 +1,29 @@
 \subsection{Cosmic Radiation Methods}
 \label{sec:Rad-Methods}
+The output format of TimePIX devices provides a great deal of flexibility in terms of data analysis. The data can provide both a simple absorbed dose from ionizing radiation as well as insight into more detailed dosimetric endpoints like dose equivalent. Additionally a clustering procedure can be performed to analyze individual particle interactions in the detector based on their morphological properties.
+
+ Since energy deposition can be determined on a per pixel basis, absorbed energy is calculated via a simple summation across all pixels in a frame of data after applying a calibration procedure \cite{calib}. With knowledge of the mass of the detector volume you can then calculate a dose by dividing the deposted energy by the detector mass. Thus a simple dose in silicon is calculated as
 
 
+
+\[D_{Si} = \frac{E}{M_{d}}\]
+
+
+
+To analyze the data on a per track basis first a clustering procedure has to be performed to seperate the data in a frame into individual tracks. This can be accomplished by applying a simple algorithm used in image processing called Flood-Fill. Whereby contiguous nonzero pixels are recursively filled and grouped together into clusters. Then, after calculating a minimum aread bounding box and linear least squares fit a track length is calculated by determining where the least square fit line intersects with the bounding box. Additionally, an azimuth angle can be determined relative to the detector orientation and a density can be calculated by dividing the number of pixels in a cluster by the area of the bounding box. A simple visual example of these calculations is shown in Figure \ref{track_analysis}.
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[width=0.8\textwidth]{figures/density.png}
+	\caption{Track parameter calculation.}
+	\label{track_analysis}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[width=0.8\textwidth]{figures/cluster_types.png}
+	\caption{Possible physical origins of cluster morphology.}
+	\label{tracks}
+	\end{center}
+\end{figure}

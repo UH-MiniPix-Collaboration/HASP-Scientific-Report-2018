@@ -62,47 +62,77 @@ Table \ref{tab:All-Commands} list the uplink commands, their functions, and a br
 \footnotesize
 $^{*}$ 	This parameter takes a hexadecimal integer that represents the number of seconds for each shutter of the MiniPix \\
 $^{**}$	This parameter denotes which mode the MiniPix will operate in: 0x01 for fixed shutter rate, 0x02 for variable shutter rate
-\medskip
 \end{table}
 
-All desired commands were successfully sent, received, and processed over the course of flight. Commands were confirmed through either 
-a change in current consumption or by reading the downlinked data and seeing a message from the command queue. 
+All commands were successfully sent, received, and processed during flight. Commands were confirmed through  
+a change in current consumption or through a message from the command queue in the data packets. 
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
-Downlink data was written to describe the data being read from the MiniPix detector. Each packet contained data listed in the table below. 
+Downlink data was written to describe the data being read from the MiniPix detector. Each packet contained data listed in the Table \ref{tab:packets}. 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{c|c}
+\caption{Downlink Packet Data by Bytes}
+\label{tab:packets}
+\bigskip
+\begin{tabular}{l|r}
 \hline
-Description	& Bytes	\\
 \hline
+\bf{Description}					& \bf{Bytes}	\\
 \hline
-MiniPix temperature 		&	val \\
+Start of Frame 						& 	4 			\\
 \hline
-Raspberry Pi temperature 	& 	val \\
+Control Byte 						& 	1 			\\
 \hline
-Frame Counts 				& 	val \\
+Data Length 						& 	1 			\\
 \hline
-Frame Dose Rate 			& 	val \\
+MiniPix Temperature 				&	4 			\\
 \hline
-Frame Count 				& 	val \\
+Raspberry Pi Temperature 			& 	4 			\\
 \hline
-Device ID 					& 	val \\
+Frame Counts 						& 	4 			\\
 \hline
-UNIX Timestamp 				& 	val \\
+Frame Dose Rate 					& 	4 			\\
+\hline
+Frame Count 						& 	4 			\\
+\hline
+Device ID 							& 	4 			\\
+\hline
+UNIX Timestamp 						& 	4 			\\
+\hline
+Error Flags							&	2 			\\
+\hline
+Checksum							& 	4			\\
+\hline
+End of Frame 						& 	1			\\
+\hline
+\multicolumn{1}{r|}{\bf{Total}}   	& 	40  		\\
 \hline
 \end{tabular}
 \end{table}
-is delimited by a new line. 
 
+Each datum is separated by commas and each packet is delimited by a new line. This made it easy to parse. Since all packets were provided 
+via the LSU HASP website, a web crawler program was written to plot in real-time data sent by the payload. These plots helped monitor the 
+status of the payload over the course of testing, integration, and flight. Figure \ref{fig:rtp} below shows the four plots created by the 
+real-time plotter.
 
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[width=\textwidth]{figures/2018EnvironmentalPlots.pdf}
+	\caption{Real-Time Plots from Payload 12 during flight}
+	\label{fig:rtp}
+	\end{center}
+\end{figure}
 
-Below is a sample of real data packets received during flight. 
+In the top left corner of Figure \ref{fig:rtp} is the MiniPix temperature in degrees Celsius over packet ID. 
+To its right is the RPi's temperature in degrees Celsius over packet ID. 
+The bottom left corner plot depicts particle counts over its corresponding packet ID. 
+Finally, to its right is the amount of radioactive dosage in $\mu$G per minute detected over packet ID.
+Listing \ref{lst:packets} below denotes a sample of real data packets received during flight. 
 
 \lstset{basicstyle=\small, numbers=left, xleftmargin=2em, frame=tb, label = Downlinks, framexleftmargin=1.5em}
-\begin{lstlisting}[caption = Sample of downlinked data packets ID: 15667 - 15670]
+\begin{lstlisting}[caption = Sample of downlinked data packets ID: 15667 - 15670, label={lst:packets}]
   ...
   40.22,72.00,2.00,0.11214,15667,1,1532297412.36
   40.22,72.00,5.00,0.52153,15668,1,1532297414.56
