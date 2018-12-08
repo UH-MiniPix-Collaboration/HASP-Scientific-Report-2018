@@ -1,14 +1,15 @@
 \subsection{Radiation}
 \label{sec: Radiation Background}
 
-Galactic cosmic rays (GCRs) are primary particles produced outside of the solar system.
+Galactic cosmic rays (GCRs) are primary particles produced outside of the solar system \cite{GCRs}.
 By colliding with other particles in Earth's atmosphere, GCRs can induce air showers consisting of secondary particles, which can be detected using sophisticated equipment.
 These secondary particles can be measured, thus revealing information regarding the primary particle such as energy and direction. 
-The density of all secondary particles \cite{Frank} is most dense in the troposphere at an altitude of about \SIrange{2}{3}{\kilo\meter}.
-This is referred to as the atmospheric depth of the shower maximum $\chi _{max}$.
-In terms of the SORA payload, this means that the bulk of the measured data during ascent and descent will 
-be of secondary particles.
-During float the particle distribution will have a larger contribution from primary particles.
+
+The mean secondary particle density reaches a peak at an altitude of about \SI{20}{\kilo\meter} \cite{regener}.
+This is known as the Regener-Pfotzer Maximum, and the altitude is dependent on several environmental factors.
+However, when considering an individual air shower, the shower peak is greatly influenced by the initial energy of the primary particle.
+In cases of ultra-high energy particles, the shower maximum $\chi _{max}$ can be as low as \SI{3}{\kilo\meter} \cite{Frank}.
+In terms of the SORA payload, this means that the certain data, such as hits per second and dose, will reach a peak around the Regener-Pfotzer Maximum, but there may be events during ascent that can be attributed to ultra-high energy air showers.
 
 Studying radiation dose is not only important for safety during spaceflight but is also important for safety during commercial airline flights.
 Airplanes fly in the portion of the troposphere where air showers are at their peak in terms of particle density. As a consequence, passengers are exposed to relatively high doses of radiation.
@@ -19,7 +20,9 @@ When an energetic particle is incident upon the sensor, energy is deposited in t
 For more detail regarding the functionality of the MiniPIX, refer to the previous flight report \cite{SORA}.
 The MiniPIX's sensor can only detect charged particles, meaning it is unable to directly detect a neutron. However, through the use of a scintillator, the neutron can interact with the scintillator and produce a specific signature of charged particles which can be detected by the MiniPIX.
 An example can be seen from Uher et al. \cite{Uher}, who use a lithium-based scintillator to detect neutrons using a silicon-based detector. The reaction is\ce{^6Li^+ + n -> ^3H+ \alpha (\SI{4.78}{\mega\eV})}.
-This iteration of the SORA payload attempted a similar procedure to measure neutrons but through the use of a boron loaded plastic scintillator \cite{BoronScintillator}.
-The scintillator had a 5\% boron loading and covered exactly half of the MiniPIX detector.
-This particular scintillator was chosen due to its relatively larger reaction cross-section with neutrons.
+
+This iteration of the SORA payload attempted a similar procedure to measure neutrons but with the use of a boron loaded plastic scintillator \cite{BoronScintillator}.
+The scintillator has a 5\% boron loading and covered exactly half of the MiniPIX detector.
+The reaction between Boron-10 nucleus and a thermal neutron is \ce{^10B + n -> ^7Li + ^4He + \gamma (\SI{480}{\kilo\eV})} according to Pawelczak et al \cite{Pawelczak}.
+This particular scintillator was chosen due to its relatively larger reaction cross-section for thermal neutron capture and its emission of light charged particles in the thermal neutron capture reaction \cite{Pawelczak}.
 The larger cross-section increases the probability that the neutron will produce particles which can then be detected by the MiniPIX.
