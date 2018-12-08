@@ -31,7 +31,7 @@ After consulting with some of the members of the TimePIX collaboration at the Un
 \label{sec:Telemetry}
 
 All telemetry was handled via the RPI. The DB9 interface from the HASP Large Payload plate was converted to a 
-RS-232 female plug. A Male RS 232 to Male USB was used to connect it to a USB port of the RPI. 
+RS-232 female plug. A Male RS-232 to Male USB was used to connect it to a USB port of the RPI. 
 The downlink data packets were written to describe the radiation data. 
 The uplink commands were sent to the RPi which delegated the work either to itself or the Arduino which 
 was connected to the RPI via USB.
@@ -96,8 +96,8 @@ real-time plotter.
 	\end{center}
 \end{figure}
 
-In the top left corner of Figure \ref{fig:rtp} is the MiniPix temperature in degrees Celsius over packet ID. 
-To its right is the RPi's temperature in degrees Celsius over packet ID. 
+In the top left corner of Figure \ref{fig:rtp} is the MiniPIX temperature in \si{\degree C} over packet ID. 
+To its right is the RPI's temperature in degrees Celsius over packet ID. 
 The bottom left corner plot depicts particle counts over its corresponding packet ID. 
 Finally, to its right is the amount of radioactive dosage in $\mu$G per minute detected over packet ID.
 Listing \ref{lst:packets} below denotes a sample of real data packets received during flight. 
