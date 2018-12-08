@@ -1,5 +1,14 @@
 \subsection{Cosmic Radiation Methods}
 \label{sec:Rad-Methods}
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[width=0.7\textwidth]{figures/clustering.png}
+	\caption{Bounding boxes calculated for a frame of flight data.}
+	\label{clusterframe}
+	\end{center}
+\end{figure}
+
 The output format of TimePIX devices provides a great deal of flexibility in terms of data analysis. The data can provide both a simple absorbed dose from ionizing radiation as well as insight into more detailed dosimetric endpoints like dose equivalent. Additionally a clustering procedure can be performed to analyze individual particle interactions in the detector based on their morphological properties.
 
  Since energy deposition can be determined on a per pixel basis, absorbed energy is calculated via a simple summation across all pixels in a frame of data after applying a calibration procedure \cite{calib}. With knowledge of the mass of the detector volume you can then calculate a dose by dividing the deposted energy by the detector mass. Thus a simple dose in silicon is calculated as
@@ -10,13 +19,23 @@ The output format of TimePIX devices provides a great deal of flexibility in ter
 
 
 
-To analyze the data on a per track basis first a clustering procedure has to be performed to seperate the data in a frame into individual tracks. This can be accomplished by applying a simple algorithm used in image processing called Flood-Fill. Whereby contiguous nonzero pixels are recursively filled and grouped together into clusters. Then, after calculating a minimum aread bounding box and linear least squares fit a track length is calculated by determining where the least square fit line intersects with the bounding box. Additionally, an azimuth angle can be determined relative to the detector orientation and a density can be calculated by dividing the number of pixels in a cluster by the area of the bounding box. A simple visual example of these calculations is shown in Figure \ref{track_analysis}.
+To analyze the data on a per track basis first a clustering procedure has to be performed to seperate the data in a frame into individual tracks. This can be accomplished by applying a simple algorithm used in image processing called Flood-Fill. Whereby contiguous nonzero pixels are recursively filled and grouped together into clusters. Then, after calculating a minimum aread bounding box and linear least squares fit a track length is calculated by determining where the least square fit line intersects with the bounding box. Additionally, an azimuth angle can be determined relative to the detector orientation and a density can be calculated by dividing the number of pixels in a cluster by the area of the bounding box. A simple visual example of these calculations is shown in Figure \ref{track_analysis} and a visualization of the bounding boxes calculated for a frame of data is shown in Figure \ref{clusterframe}
 
 \begin{figure}[H]
 	\begin{center}
 	\includegraphics[width=0.8\textwidth]{figures/density.png}
 	\caption{Track parameter calculation.}
 	\label{track_analysis}
+	\end{center}
+\end{figure}
+
+Another standard technique used when analyzing TimePIX data is sorting clusters in the data based on their morphological characteristics. After clustering, additional processing is applied to calculate individual track parameters. These parameters can then be placed into a simple sorting algorithm that assigns them labels based roughly on their characteristics. The idea behind this morphological analysis is that information regarding the origin of the particle that made the track can be elucidated on the principle that similar types of particles will create similar shaped tracks in the detector. Based on a tracks density, pixel count, inner pixel count and ratio between the bounding box's length and width a track is sorted as either a small blob, medium blob, heavy blob, light track, straight track or heavy track. The specifics of the algorithm are defined in Figure \ref{stuart_algo}.
+
+\begin{figure}[H]
+	\begin{center}
+	\includegraphics[width=0.65\textwidth]{figures/stuartgraphic.pdf}
+	\caption{Track parameter calculation.}
+	\label{stuart_algo}
 	\end{center}
 \end{figure}
 
