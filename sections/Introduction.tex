@@ -2,7 +2,7 @@
 \label{sec:Introduction}
 \newcommand{\indentitem}{\setlength\itemindent{25pt}}%%%indent costume command
 %insert image here of payload on gondola or during flight if possible.
-\begin{figure}[h!]
+\begin{figure}[H]
 	\begin{center}
 	\includegraphics[width=50 mm, scale=0.5]{figures/gondola.jpg}
 	\caption{Payload on the flightline}
@@ -35,7 +35,7 @@ IMPACT LOCATION:&32.44816666N 109.5093472W which is 60 miles SW of Mt Graham, Ar
 
 %Mission statement and objectives:
 %SORA 2.0 was a continuation of SORA~\cite{SORA} but this time seeking to . . .
-SORA 2.0 was a continuation flight to further develop and build upon the first SORA flight \cite{SORA}.  SORA's first flight in 2017 collected valuable information, yet another mission was necessary to confirm and add to the findings of the first SORA flight.  Once again SORA attempted to collect extremophile bacteria and spores that may reside 36 to 41 kilometers in the upper atmosphere.  For the radiation portion of SORA 2.0, a MiniPIX particle detector in a custom built casing coupled with a boron loaded scintillator was also flown to further study the surrounding radiation and the possible effects on extremophiles.  
+SORA 2.0 was a continuation flight to further develop and build upon the first SORA flight \cite{SORA}.  SORA's first flight in 2017 collected valuable information, yet another mission was necessary to confirm and add to the findings of the first SORA flight.  Once again SORA attempted to collect extremophile bacteria and spores that may reside 36 to 41 kilometers in the upper atmosphere.  For the radiation portion of SORA 2.0, a MiniPIX particle detector inside a custom built casing and coupled with a boron loaded scintillator was also flown.  This was to further study the surrounding radiation and attempt to measure neutrons in order to understand the possible effects on extremophiles.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Past scientific questions:
 % Are extremophiles present in the upper atmosphere at altitudes of 36 to 41 km?  If extremophiles are captured, can the SORA payload clean box container prevent sample contamination? Finally, can we collect data accurately enough to effectively study the effects of environmental radiation on extremophile organisms and spores.
@@ -49,6 +49,8 @@ The goals and objectives for SORA 2.0 are based on the following scientific ques
 	{\indentitem \item After confirming that microorganisms are present in the upper atmosphere in the first SORA mission, what extremophiles are present in the upper atmosphere at altitudes of 36 to 41 km?}
 	{\indentitem \item Can Fluropore membrane filters (0.22 micron) passively capture microorganisms and spores in the upper atmosphere?}
 	{\indentitem \item Are the new background control protocols sufficient to confirm microorganism and spore capture?} 
+	{\indentitem \item Coupling a boron loaded scintillator to the MiniPIX, can it detect and measure neutrons? } 
+	{\indentitem \item If there is a measured difference in the MiniPIX due to a neutron event, is that due to the scintillator?}
 	{\indentitem \item Finally, with a deeper understanding of the MiniPIX after the first SORA mission, can SORA 2.0 collect more data to study cosmic radiation that microoganisms and spores experience on a daily basis? Specifically, can SORA 2.0 obtain useful information about the biological effectiveness of this radiation on bacteria through parameters such as linear energy transfer and dose equivalent?}
 \end{itemize}
 %
@@ -62,7 +64,7 @@ The goals and objectives for SORA 2.0 are based on the following scientific ques
 %%%%%%%SORA 2.0 Objectives here.\\
 % INSERT CITATIONS HERE SINCE WE ARE TAKING FROM OUR OWN APPLICATION
 
-{\bf Primary Objectives:}
+\noindent {\bf Primary Objectives:}
 	\begin{enumerate}
 	\item Using a refined astrobiology system, attempt to capture bacteria in the upper atmosphere at approximately \SIrange{30}{41}{\kilo\meter} of altitude.
 %	
@@ -74,6 +76,7 @@ The goals and objectives for SORA 2.0 are based on the following scientific ques
 %
 {\bf Secondary Objectives:}
 \begin{enumerate}
+\item Couple a boron loaded scintillator to half the MiniPIX detector and attempt to measure neutrons.
 \item Develop and simplify a radiation and payload flight control system.
 %	\item Determine the polar angle of hits on the detector, compare them to payload orientation information and develop simulations to verify the results.
 \item Further testing of the astrobiology hardware in flight and the methodology for collection of microbes in extreme environments at high-altitude. 
@@ -94,10 +97,22 @@ The goals and objectives for SORA 2.0 are based on the following scientific ques
 %These are from provisional application:
 %We need to review these, add more and remove some.
 	\item Based on the collection results from previous HASP payloads we predict the concentration of cells at an altitude of 36 km will be less than \SI{1000}{cells\per\liter}.
-	\item Objective: Sample a minimum volumetric amount of air at target altitude for the duration of the float phase (approximately 15 to 18 hours).
+		\begin{enumerate}
+			\item Objective: Sample a minimum volumetric amount of air at target altitude for the duration of the float phase (approximately 15 to 18 hours).
+			\item Status:
+		\end{enumerate}
+%
 	\item Based on control samples and testing before flight, we can compare our final flight results to previous applications.
-	\item Objective: Quantify and characterize any contamination with our laboratory and payload disinfection procedures.
-	\item Objective: Minimize the amount of external contamination before flight with thorough decontamination procedures.
+		\begin{enumerate}
+			\item Objective: Quantify and characterize any contamination with our laboratory and payload disinfection procedures.
+			\item Objective: Minimize the amount of external contamination before flight with thorough decontamination procedures.
+			\item Status:
+		\end{enumerate}
+%
 	\item Based on measured results of dosage rates, the higher exposure to radiation may change the organism's cellular make-up.
+		\begin{enumerate}
+			\item Objective:
+			\item Status:
+		\end{enumerate}	
 	%\item Objective: After capturing samples, analyze data and compare biological effects to similar genotypes found on Earth's surface. (Future flights)
 \end{enumerate}
