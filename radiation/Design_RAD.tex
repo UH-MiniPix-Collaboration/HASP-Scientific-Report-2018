@@ -1,8 +1,8 @@
 \subsection{Radiation Monitoring System Design}
 \label{sec:Radiation Design}
-The Raspberry Pi has proven to operate at float altitudes both from the previous SORA flight and other HASP payloads from previous years and as such was chosen again to host the control and analysis software. Similarly to the SORA 1.0 flight, both TimePIX devices were interfaced with the RPI via USB and controlled via the pypixet library developed at CERN by Daniel Turcek. The major difference for the 2018 SORA flight is that the software was redesigned to support an arbitrary number of TimePIX devices to record data at the same time. This means that multiple TimePIX detector experiments could be run concurrently without adding another control system. Another major difference is that the detectors could be configured directly from the serial uplink and collected data could be downlinked in real time. This allowed data from the detector to be analyzed and plotted in real time by the members of our team.
+The Raspberry Pi 3 (RPI) has proven to operate at float altitudes both from the previous SORA flight and other HASP payloads from previous years and as such was chosen again to host the control and analysis software. Similarly to the SORA 1.0 flight, both TimePIX devices were interfaced with the RPI via USB and controlled via the PyPixet library developed at CERN by Daniel Turcek. The major difference for the 2018 SORA flight is that the software was redesigned to support an arbitrary number of TimePIX devices to record data at the same time. This means that multiple TimePIX detector experiments could be run concurrently without adding another control system. Another major difference is that the detectors could be configured directly from the serial uplink and collected data could be downlinked in real-time. This allowed data from the detector to be analyzed and plotted in real-time by our mission control team.
 
-The control and analysis software was written entirely in Python and operated directly on top of the default Raspbian image. Because the pypixet software blocks when exposing the detector for collection, both detectors had to collect data in their own threads to allow the main thread to process uplink commands and control other systems. Data from each of these threads was then placed onto a queue where the main thread could periodically check if there was data ready to be processed. When a frame from one of the detectors was ready to be processed the main thread performed the analysis and then downlinked the results. Consequently, downlink speed was directly tied to shutter speed. An overview of the software design is shown in 
+The control and analysis software was written entirely in Python and operated directly on top of the default Raspbian image. Because the PyPixet software blocks when exposing the detector for collection, both detectors had to collect data in their own threads to allow the main thread to process uplink commands and control other systems. Data from each of these threads was then placed onto a queue where the main thread could periodically check if there was data ready to be processed. When a frame from one of the detectors was ready to be processed the main thread performed the analysis and then downlinked the results. Consequently, downlink speed was directly tied to shutter speed. An overview of the software design is shown in 
 Figure \ref{fig:softwaredesign}.
 
 
@@ -14,15 +14,15 @@ Figure \ref{fig:softwaredesign}.
 	\end{center}
 \end{figure}
  
-By and large the MiniPIX, and TimePIX detectors have proven to be robust and resilient towards large thermal fluctuations. However, during the course of integration testing in Palestine, a failure was observed. During the cold cycle of the test a slow but steadily increasing number of counts was observed that is anomalous to what one would expect near the earths surface. The expected number of counts per second should've been close to 3 but the downlinked data was reporting values of over 300 as shown in Figure \ref{fig:integrationtemps}.
-A correlation analysis was performed and showed that there was no direct correlation between device counts and temperature. Additionally, this behavior was not observed on an identical detector used during the 2017 SORA flight. 
+By and large the MiniPIX, and TimePIX detectors have proven to be robust and resilient towards large thermal fluctuations. However, during the course of integration testing in Palestine, TX, a failure was observed. During the cold cycle of the test a slow but steadily increasing number of counts was observed that is anomalous to what one would expect near the earths surface. The expected number of counts per second should've been close to 3 but the downlinked data was reporting values of over 300 as shown in Figure \ref{fig:integrationtemps}.
+A correlation analysis was performed and showed that there was no direct correlation between device counts and temperature. Additionally, this behavior was not observed on an identical detector used during the 2017 SORA flight \cite{SORA}. 
 
 After consulting with some of the members of the TimePIX collaboration at the University of Houston and NASA we were informed that they were unable to determine a concrete reason for the failure but did provide a couple of possible explanations. The first, but most unlikely cause is that of a single event upset in the device causing the detector threshold to be lowered. TimePIX devices deployed on the International Space Station often experience this kind of behavior and consequently reload their configurations every few frames to prevent it. This is an exceedingly unlikely possibility in our case however, given the low levels of high energy particles near the earths surface. Another possibility is that the cold caused a partial failure in the power supply and the RPI was unable to provide enough power to the detector. This explanation is somewhat more likely, but because this kind of failure was never observed again it is difficult to say definitively what the cause was.
 
 \begin{figure}[H]
 	\begin{center}
 	\includegraphics[width=\textwidth]{figures/tempsandcountsvtime.png}
-	\caption{Temperature of flight computer and detector and counts during integration testing.}
+	\caption{Temperature of flight computer and detector and counts during integration testing in Palestine, TX.}
 	\label{fig:integrationtemps}
 	\end{center}
 \end{figure}
@@ -30,15 +30,15 @@ After consulting with some of the members of the TimePIX collaboration at the Un
 \subsection{Telemetry}
 \label{sec:Telemetry}
 
-All telemetry was handled via the RPi. The DB9 interface from the HASP Large Payload plate was converted to a 
-RS-232 female plug. A Male RS 232 to Male USB was used to connect it to a USB port of the RPi. 
+All telemetry was handled via the RPI. The DB9 interface from the HASP Large Payload plate was converted to a 
+RS-232 female plug. A Male RS 232 to Male USB was used to connect it to a USB port of the RPI. 
 The downlink data packets were written to describe the radiation data. 
 The uplink commands were sent to the RPi which delegated the work either to itself or the Arduino which 
-was connected to the RPi via USB.
+was connected to the RPI via USB.
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
-Downlink data was packetized at a rate of 160 bits per second and described the data being read from the MiniPix detector. 
+Downlink data was packetized at a rate of 160 bits per second and described the data being read from the MiniPIX detector. 
 In addition, downlinked packets were interrupted with command queue messages for command confirmation.
 Each packet contained data listed in the Table \ref{tab:packets}. 
 
