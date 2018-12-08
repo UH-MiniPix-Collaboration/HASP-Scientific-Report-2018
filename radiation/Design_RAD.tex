@@ -74,24 +74,37 @@ Downlink data was written to describe the data being read from the MiniPix detec
 
 \begin{table}[H]
 \centering
-\begin{tabular}{c|c}
+\caption{Downlink Packet Data by Bytes}
+\label{tab:packets}
+\bigskip
+\begin{tabular}{l|r}
 \hline
-Description	& Bytes	\\
 \hline
+\bf{Description}					& \bf{Bytes}	\\
 \hline
-MiniPix temperature 		&	val \\
+Start of Frame 						& 	4 \\
 \hline
-Raspberry Pi temperature 	& 	val \\
+Control Byte 						& 	1 \\
 \hline
-Frame Counts 				& 	val \\
+Data Length 						& 	1 \\
 \hline
-Frame Dose Rate 			& 	val \\
+MiniPix Temperature 				&	4 \\
 \hline
-Frame Count 				& 	val \\
+Raspberry Pi Temperature 			& 	4 \\
 \hline
-Device ID 					& 	val \\
+Frame Counts 						& 	4 \\
 \hline
-UNIX Timestamp 				& 	val \\
+Frame Dose Rate 					& 	4 \\
+\hline
+Frame Count 						& 	4 \\
+\hline
+Device ID 							& 	4 \\
+\hline
+UNIX Timestamp 						& 	4 \\
+\hline
+Error Flags							&	2 \\
+\hline
+\multicolumn{1}{r|}{\bf{Total}}   	& 	40  \\
 \hline
 \end{tabular}
 \end{table}
