@@ -16,7 +16,7 @@ The output format of TimePIX devices provides a great deal of flexibility in ter
 \[D_{Si} = \frac{E}{M_{d}}\]
 
 
-To analyze the data on a per track basis first, a clustering procedure has to be performed to separate the data in a frame into individual tracks. This can be accomplished by applying a simple algorithm used in image processing called Flood-Fill; whereby contiguous nonzero pixels are recursively filled and grouped together into clusters. Then, after calculating a minimum area bounding box and linear least squares fit a track length is calculated by determining where the least square fit line intersects with the bounding box. Additionally, an azimuth angle can be determined relative to the detector orientation and a density can be calculated by dividing the number of pixels in a cluster by the area of the bounding box. A simple visual example of these calculations is shown in Figure \ref{track_analysis} and a visualization of the bounding boxes calculated for a frame of data is shown in Figure \ref{clusterframe}.
+To analyze the data on a per track basis first, a clustering procedure has to be performed to separate the data in a frame into individual tracks. This can be accomplished by applying a simple algorithm used in image processing called Flood-Fill; whereby contiguous nonzero pixels are recursively filled and grouped together into clusters. Then, after calculating a minimum area bounding box and linear least squares fit a track length is calculated by determining where the least square fit line intersects with the bounding box. Additionally, an azimuth angle can be determined relative to the detector orientation and a density can be calculated by dividing the number of pixels in a cluster by the area of the bounding box. A simple visual example of these calculations is shown in figure \ref{track_analysis} and a visualization of the bounding boxes calculated for a frame of data is shown in figure \ref{clusterframe}.
 
 
 \begin{figure}[H]
@@ -27,17 +27,16 @@ To analyze the data on a per track basis first, a clustering procedure has to be
 	\end{center}
 \end{figure}
 
-Given the track length calculated from the fit line and the bounding box, a three-dimensional track through the detector by using simple trigonometry. Given the sensor thickness $T$ and the projected track length $L_{p}$ the length of the track through the detector $L$ can be calculated by
-
+Given the track length calculated from the fit line and the bounding box, a three-dimensional track through the detector can be constructed by using simple trigonometry. Given the sensor thickness $T$ and the projected track length $L_{p}$ the length of the track through the detector $L$ can be calculated by
+%
 \[L = \sqrt{L_{p}^{2} + T^{2}} \]
-
+%
 \newpage
 With a true track length calculated one can then calculate the linear energy transfer ($LET$) of a track by dividing the total energy deposited in a cluster $E$ by the track length $L$. LET is an important reference as it provides a standard measurement for a track that is independent of the angle of incidence for an incident particle. While not discussed in detail in this report LET is also the quantity that is used in calculating dose equivalent in flesh.
-
+%
 \[LET_{Si} = \frac{E}{L}\]
-
-
-Another standard technique used when analyzing TimePIX data is sorting clusters in the data based on their morphological characteristics. After clustering, additional processing is applied to calculate individual track parameters. These parameters can then be placed into a simple sorting algorithm that assigns them labels based roughly on their characteristics. The idea behind this morphological analysis is that information regarding the origin of the particle that made the track can be elucidated on the principle that similar types of particles will create similar shaped tracks in the detector. Based on a tracks density, pixel count, inner pixel count and ratio between the bounding box's length and width a track is sorted as either a small blob, medium blob, heavy blob, light track, straight track or heavy track. The specifics of the algorithm are defined in Figure \ref{stuart_algo}.
+%
+Another standard technique used when analyzing TimePIX data is sorting clusters in the data based on their morphological characteristics. After clustering, additional processing is applied to calculate individual track parameters. These parameters can then be placed into a simple sorting algorithm that assigns them labels based roughly on their characteristics. The idea behind this morphological analysis is that information regarding the origin of the particle that made the track can be elucidated on the principle that similar types of particles will create similar shaped tracks in the detector. Based on a tracks density, pixel count, inner pixel count and ratio between the bounding box's length and width a track is sorted as either a small blob, medium blob, heavy blob, light track, straight track or heavy track. The specifics of the algorithm are defined in figure \ref{stuart_algo}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -47,7 +46,7 @@ Another standard technique used when analyzing TimePIX data is sorting clusters 
 	\end{center}
 \end{figure}
 
-While the track morphology does not provide a hard and fast classification, a rough idea of the origin of a track in a mixed radiation field can be determined. Possible origins of track morphology are shown in Figure \ref{track_morphology}.
+While the track morphology does not provide a hard and fast classification, a rough idea of the origin of a track in a mixed radiation field can be determined. Possible origins of track morphology are shown in figure \ref{track_morphology}.
 
 \begin{figure}[H]
 	\begin{center}
