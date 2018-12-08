@@ -62,11 +62,10 @@ Table \ref{tab:All-Commands} list the uplink commands, their functions, and a br
 \footnotesize
 $^{*}$ 	This parameter takes a hexadecimal integer that represents the number of seconds for each shutter of the MiniPix \\
 $^{**}$	This parameter denotes which mode the MiniPix will operate in: 0x01 for fixed shutter rate, 0x02 for variable shutter rate
-\medskip
 \end{table}
 
-All desired commands were successfully sent, received, and processed over the course of flight. Commands were confirmed through either 
-a change in current consumption or by reading the downlinked data and seeing a message from the command queue. 
+All commands were successfully sent, received, and processed during flight. Commands were confirmed through  
+a change in current consumption or through a message from the command queue in the data packets. 
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
@@ -111,7 +110,7 @@ Error Flags							&	2 			\\
 
 Each datum is separated by commas and each packet is delimited by a new line. This made it easy to parse. Since all packets were provided 
 via the LSU HASP website, a web crawler program was written to plot in real-time data sent by the payload. These plots helped monitor the 
-status of the payload over the course of testing, integration, and flight. Figure \ref{fig:rtp} below are the four plots created by the 
+status of the payload over the course of testing, integration, and flight. Figure \ref{fig:rtp} below shows the four plots created by the 
 real-time plotter.
 
 \begin{figure}[H]
