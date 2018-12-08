@@ -40,6 +40,7 @@ was connected to the RPi via USB.
 \label{sec:Uplink} 
 Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
 Table \ref{tab:All-Commands} list the uplink commands, their functions, and a brief description of what they did. 
+These commands were utilized about four time per hour. No on-board transmitters or receivers were used this year.
 
 \begin{table}[H]
 \centering
@@ -69,7 +70,9 @@ a change in current consumption or through a message from the command queue in t
 
 \subsubsection{Downlink}
 \label{sec:Downlink}
-Downlink data was written to describe the data being read from the MiniPix detector. Each packet contained data listed in the Table \ref{tab:packets}. 
+Downlink data was packetized at a rate of 160 bits per second and described the data being read from the MiniPix detector. 
+In addition, downlinked packets were interrupted with command queue messages for command confirmation.
+Each packet contained data listed in the Table \ref{tab:packets}. 
 
 \begin{table}[H]
 \centering
@@ -115,7 +118,7 @@ End of Frame 						& 	1			\\
 Each datum is separated by commas and each packet is delimited by a new line. This made it easy to parse. Since all packets were provided 
 via the LSU HASP website, a web crawler program was written to plot in real-time data sent by the payload. These plots helped monitor the 
 status of the payload over the course of testing, integration, and flight. Figure \ref{fig:rtp} below shows the four plots created by the 
-real-time plotter.
+real-time plotter. 
 
 \begin{figure}[H]
 	\begin{center}
@@ -140,3 +143,6 @@ Listing \ref{lst:packets} below denotes a sample of real data packets received d
   40.22,71.40,4.00,0.99396,15670,1,1532297419.07
   ...
 \end{lstlisting}
+
+No analog channels were required. All communication to and from the payload was done via HASP's integrated communication 
+units.
