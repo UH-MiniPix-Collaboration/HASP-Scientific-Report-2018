@@ -31,9 +31,10 @@ Given the track length calculated from the fit line and the bounding box, a thre
 
 \[L = \sqrt{L_{p}^{2} + T^{2}} \]
 
-With a true track length calculated one can then calculate the linear energy transfer ($LET$) of a track by dividing the total energy deposited in a cluster $E$ by the track length $L$.
+With a true track length calculated one can then calculate the linear energy transfer ($LET$) of a track by dividing the total energy deposited in a cluster $E$ by the track length $L$. LET is an important reference as it provides a standard measurement for a track that is independent of the angle of incidence for an incident particle. While not discussed in detail in this report LET is also the quantity that is used in calculating dose equivalent in flesh.
 
 \[LET_{Si} = \frac{E}{L}\]
+
 
 Another standard technique used when analyzing TimePIX data is sorting clusters in the data based on their morphological characteristics. After clustering, additional processing is applied to calculate individual track parameters. These parameters can then be placed into a simple sorting algorithm that assigns them labels based roughly on their characteristics. The idea behind this morphological analysis is that information regarding the origin of the particle that made the track can be elucidated on the principle that similar types of particles will create similar shaped tracks in the detector. Based on a tracks density, pixel count, inner pixel count and ratio between the bounding box's length and width a track is sorted as either a small blob, medium blob, heavy blob, light track, straight track or heavy track. The specifics of the algorithm are defined in Figure \ref{stuart_algo}.
 
