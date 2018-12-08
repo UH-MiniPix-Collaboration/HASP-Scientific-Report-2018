@@ -36,38 +36,6 @@ The downlink data packets were written to describe the radiation data.
 The uplink commands were sent to the RPi which delegated the work either to itself or the Arduino which 
 was connected to the RPi via USB.
 
-\subsubsection{Uplink}
-\label{sec:Uplink} 
-Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
-Table \ref{tab:All-Commands} list the uplink commands, their functions, and a brief description of what they did. 
-These commands were utilized about four time per hour. No on-board transmitters or receivers were used this year.
-
-\begin{table}[H]
-\centering
-\caption{Table of All Uplink Commands Used During Flight}
-\label{tab:All-Commands}
-\bigskip
-\begin{tabular}{c|c|c|c}
-\hline
-\hline
-\multicolumn{1}{c|}{\bfseries Command} & \multicolumn{1}{c|}{\bfseries Byte 1} &  \multicolumn{1}{c|}{\bfseries Byte 2} & \multicolumn{1}{c}{\bfseries Current Consumption (A)} \\
-\hline
-	Start Acquisition  		& 0x01	& -	 					& 0.47    \\ \hline
-	End Acquisition 		& 0x02	& -	 					& 0.29    \\ \hline
-	Change Shutter Rate 	& 0x03 	& 0x01 - 0xFF$^*$		& 0.47 		\\ \hline
-	Change Acquisition Mode	& 0x04	& 0x01 or 0x02$^{**}$	& 0.47		\\ \hline
-	Astrobiology System On	& 0x05	& -						& 1.8			\\ \hline
-	Astrobiology System Off	& 0x06	& -						& 0.47		\\ \hline
-\end{tabular}
-\\
-\footnotesize
-$^{*}$ 	This parameter takes a hexadecimal integer that represents the number of seconds for each shutter of the MiniPix \\
-$^{**}$	This parameter denotes which mode the MiniPix will operate in: 0x01 for fixed shutter rate, 0x02 for variable shutter rate
-\end{table}
-
-All commands were successfully sent, received, and processed during flight. Commands were confirmed through  
-a change in current consumption or through a message from the command queue in the data packets. 
-
 \subsubsection{Downlink}
 \label{sec:Downlink}
 Downlink data was packetized at a rate of 160 bits per second and described the data being read from the MiniPix detector. 
@@ -146,3 +114,35 @@ Listing \ref{lst:packets} below denotes a sample of real data packets received d
 
 No analog channels were required. All communication to and from the payload was done via HASP's integrated communication 
 units.
+
+\subsubsection{Uplink}
+\label{sec:Uplink} 
+Uplink commands were used to start, end, and change parameters within our payload over the course of flight. 
+Table \ref{tab:All-Commands} list the uplink commands, their functions, and a brief description of what they did. 
+These commands were utilized about four time per hour. No on-board transmitters or receivers were used this year.
+
+\begin{table}[H]
+\centering
+\caption{Table of All Uplink Commands Used During Flight}
+\label{tab:All-Commands}
+\bigskip
+\begin{tabular}{c|c|c|c}
+\hline
+\hline
+\multicolumn{1}{c|}{\bfseries Command} & \multicolumn{1}{c|}{\bfseries Byte 1} &  \multicolumn{1}{c|}{\bfseries Byte 2} & \multicolumn{1}{c}{\bfseries Current Consumption (A)} \\
+\hline
+	Start Acquisition  		& 0x01	& -	 					& 0.47    \\ \hline
+	End Acquisition 		& 0x02	& -	 					& 0.29    \\ \hline
+	Change Shutter Rate 	& 0x03 	& 0x01 - 0xFF$^*$		& 0.47 		\\ \hline
+	Change Acquisition Mode	& 0x04	& 0x01 or 0x02$^{**}$	& 0.47		\\ \hline
+	Astrobiology System On	& 0x05	& -						& 1.8			\\ \hline
+	Astrobiology System Off	& 0x06	& -						& 0.47		\\ \hline
+\end{tabular}
+\\
+\footnotesize
+$^{*}$ 	This parameter takes a hexadecimal integer that represents the number of seconds for each shutter of the MiniPix \\
+$^{**}$	This parameter denotes which mode the MiniPix will operate in: 0x01 for fixed shutter rate, 0x02 for variable shutter rate
+\end{table}
+
+All commands were successfully sent, received, and processed during flight. Commands were confirmed through  
+a change in current consumption or through a message from the command queue in the data packets. 
