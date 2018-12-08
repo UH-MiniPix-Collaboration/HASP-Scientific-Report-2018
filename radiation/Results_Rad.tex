@@ -1,15 +1,17 @@
 \subsection{Cosmic Radiation}
 \label{sec:Cosmic-Radiation-Results}
 
-During the duration of the flight, a total of 16376 frames were collected and recovered successfully from the payload. Some examples of track images collected in the detector are shown in Figure \ref{tracks}. While the dose rate and number of counts were downlinked and available in real time, retrieval of the raw data frames allows for a significantly more complex analysis of the data. Particles in TimePIX detectors can be characterized by classifying them according to the shapes of the track they form and their lineal energy transfer. For example small light tracks of 2-3 pixels are characteristic of light scattering electrons, while medium to heavy blobs are characteristic of protons.
+During the duration of the flight, a total of 16376 frames of data were collected and recovered successfully from the payload. Shown in Figure \ref{tracks} are a sample of some of the tracks collected at float. The image in the top left likely represents an interaction with a heavy ion while the rest of the tracks show some light and straight tracks.
 
 \begin{figure}[H]
 	\begin{center}
-	\includegraphics[width=0.8\textwidth]{figures/tracks.png}
+	\includegraphics[width=0.75\textwidth]{figures/tracks.png}
 	\caption{Tracks collected at float.}
 	\label{tracks}
 	\end{center}
 \end{figure}
+
+Shown in Figure \ref{let} (a) is the LET distribution for the entire population of tracks collected at float while \ref{let} (b) shows the LET distribution split up by track classification.
 
 \begin{figure}[H]
 \hfill
@@ -18,14 +20,17 @@ During the duration of the flight, a total of 16376 frames were collected and re
 \subfigure[LET Spectra from each cluster type.]{\includegraphics[width=8cm]{figures/LETSpectraPerCluster2018.pdf}}
 \hfill
 \caption{LET Spectrum data from Flight}
+\label{let}
 \end{figure}
 
+Shown in Figure \ref{counts} is a comparison of the count rate for the SORA 2017 and 2018 flight. The shape of the data is nearly identical however one can observe that the 2018 flight has a higher variability and is slightly less homogeneous when compared to the 2017 data. The overall variability is due to a faster frame rate and the period of decreased variability that occurs just after the peak is due to a test of the ability to dynamically modify the frame rate via uplink commands. Another significant feature of the data is that the 2018 flight appears to be shifted upwards by approximately two counts per second when compared to the 2017 data. This would seem to suggest a higher flux for the 2018 flight.
 \begin{figure}[H]
 \hfill
-\subfigure[LET Spectrum from data collected during the duration of 2017 flight.]{\includegraphics[width=\textwidth]{figures/counts_per_second_2017.pdf}}
+\subfigure[Counts from data collected during the 2017 flight.]{\includegraphics[width=\textwidth]{figures/counts_per_second_2017.pdf}}
 \hfill
-\subfigure[LET Spectrum from data collected during the duration of 2018 flight.]{\includegraphics[width=\textwidth]{figures/counts_per_second_2018.pdf}}
+\subfigure[Counts from data collected during the 2018 flight.]{\includegraphics[width=\textwidth]{figures/counts_per_second_2018.pdf}}
 \hfill
 \caption{Cluster counts data from Flights 2018 and 2017}
+\label{counts}
 \end{figure}
 
